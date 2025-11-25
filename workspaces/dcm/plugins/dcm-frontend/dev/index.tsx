@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 import { createDevApp } from '@backstage/dev-utils';
-import { dcmFrontendPlugin, DcmFrontendPage } from '../src/plugin';
+import { dcmFrontendPlugin, DcmPluginPage } from '../src/plugin';
 
 createDevApp()
   .registerPlugin(dcmFrontendPlugin)
   .addPage({
-    element: <DcmFrontendPage />,
-    title: 'Root Page',
+    element: <DcmPluginPage />,
+    title: 'DCM Plugin',
     path: '/dcm-frontend',
   })
   .render();

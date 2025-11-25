@@ -1,0 +1,79 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "orta.vscode-jest"
+    ]
+  },
+  "settings": {
+    "window.title": "DCM Workspace",
+    "jest.jestCommandLine": "node_modules/.bin/jest --config node_modules/@backstage/cli/config/jest.js",
+    "jest.runMode": {
+      "type": "on-demand"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start Dev Server",
+        "type": "shell",
+        "command": "yarn start",
+        "options": {
+          "cwd": "${workspaceFolder}/plugins/dcm-frontend"
+        },
+        "isBackground": true,
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "^(.*)$",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".*",
+            "endsPattern": ".*(Rspack compiled successfully|Local:.*http://localhost:3000|compiled successfully).*"
+          }
+        }
+      },
+      {
+        "label": "Stop Dev Server",
+        "type": "shell",
+        "command": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true",
+        "options": {
+          "cwd": "${workspaceFolder}/plugins/dcm-frontend"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "silent",
+          "close": true
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        "url": "http://localhost:3000/dcm-frontend",
+        "webRoot": "${workspaceFolder}",
+        "preLaunchTask": "Start Dev Server",
+        "postDebugTask": "Stop Dev Server"
+      }
+    ]
+  }
+}

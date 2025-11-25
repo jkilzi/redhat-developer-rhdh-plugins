@@ -13,4 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { dcmFrontendPlugin, DcmFrontendPage } from './plugin';
+export { dcmFrontendPlugin, DcmPluginPage } from './plugin';
+export { DataCenterIcon } from './ui/dcm/views/dcm_icon';

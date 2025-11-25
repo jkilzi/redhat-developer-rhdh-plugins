@@ -27,11 +27,11 @@ export const dcmFrontendPlugin = createPlugin({
   },
 });
 
-export const DcmFrontendPage = dcmFrontendPlugin.provide(
+export const DcmPluginPage = dcmFrontendPlugin.provide(
   createRoutableExtension({
-    name: 'DcmFrontendPage',
+    name: 'DcmPluginPage',
     component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+      import('./ui/dcm/views/dcm_main_screen').then(m => m.DcmMainScreen),
     mountPoint: rootRouteRef,
   }),
 );

@@ -30,7 +30,10 @@
         "type": "shell",
         "command": "yarn start",
         "options": {
-          "cwd": "${workspaceFolder}/plugins/dcm-frontend"
+          "cwd": "${workspaceFolder}/plugins/dcm-frontend",
+          "env": {
+            "BROWSER": "none"
+          }
         },
         "isBackground": true,
         "problemMatcher": {
